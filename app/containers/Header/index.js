@@ -49,7 +49,8 @@ export class Header extends React.Component {
             <IconButton
               className={classes.menuButton}
               color="inherit"
-              aria-label="Menu">
+              aria-label="Menu"
+            >
               <MenuIcon />
             </IconButton>
             <Button color="inherit">Discover</Button>
@@ -58,7 +59,8 @@ export class Header extends React.Component {
             <Typography
               className={classes.flex}
               variant="title"
-              color="inherit">
+              color="inherit"
+            >
               {this.props.title}
             </Typography>
             <Button color="inherit">Login</Button>

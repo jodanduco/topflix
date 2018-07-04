@@ -16,6 +16,6 @@ import Button from '@material-ui/core/Button';
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
-    return <Header title="HomePage"/>;
+    return <Header title="HomePage" />;
   }
 }
