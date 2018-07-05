@@ -53,9 +53,6 @@ export class Header extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Button color="inherit">Discover</Button>
-            <Button color="inherit">Top movies</Button>
-            <Button color="inherit">Top TV Series</Button>
             <Typography
               className={classes.flex}
               variant="title"
