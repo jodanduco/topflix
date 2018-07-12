@@ -1,49 +1,48 @@
 /**
  *
- * DiscoverPage
+ * CardsContainer
  *
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
-// Components
-import CardsContainer from 'containers/CardsContainer';
+import classNames from 'classnames';
+import styles from './cardsContainer.scss';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectDiscoverPage from './selectors';
+import makeSelectCardsContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import CardItem from 'containers/CardItem';
 
 /* eslint-disable react/prefer-stateless-function */
-export class DiscoverPage extends React.Component {
+export class CardsContainer extends React.Component {
   render() {
     return (
-      <div>
-        <Helmet>
-          <title>DiscoverPage</title>
-          <meta name="description" content="Description of DiscoverPage" />
-        </Helmet>
-        {/*<FormattedMessage {...messages.header} />*/}
-        <CardsContainer />
+      <div className="container">
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
       </div>
     );
   }
 }
 
-DiscoverPage.propTypes = {
+CardsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  discoverpage: makeSelectDiscoverPage(),
+  cardscontainer: makeSelectCardsContainer(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -57,11 +56,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'discoverPage', reducer });
-const withSaga = injectSaga({ key: 'discoverPage', saga });
+const withReducer = injectReducer({ key: 'cardsContainer', reducer });
+const withSaga = injectSaga({ key: 'cardsContainer', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(DiscoverPage);
+)(CardsContainer);

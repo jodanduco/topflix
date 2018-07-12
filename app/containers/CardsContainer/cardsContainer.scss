@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  background-color: yellowgreen;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-gap: 20px;
+  height: 100%;
+}
+
+.cardItem {
+  //background-color: #444;
+  //color: #fff;
+  //border-radius: 5px;
+  padding: 20px;
+  //font-size: 150%;
+}
