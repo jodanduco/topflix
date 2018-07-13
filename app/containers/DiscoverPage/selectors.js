@@ -17,7 +17,7 @@ const selectDiscoverPageDomain = state =>
  */
 
 const makeSelectDiscoverPage = () =>
-  createSelector(selectDiscoverPageDomain, substate => substate.toJS());
+  createSelector(selectDiscoverPageDomain, substate => substate.get('data'));
 
 export default makeSelectDiscoverPage;
 export { selectDiscoverPageDomain };

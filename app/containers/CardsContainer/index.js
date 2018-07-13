@@ -20,25 +20,28 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import CardItem from 'containers/CardItem';
+import CardItem2 from 'components/CardItem2';
 
 /* eslint-disable react/prefer-stateless-function */
 export class CardsContainer extends React.Component {
+  buildCardItems(data) {
+    const cardItems = data.map(cardInfo => (
+      <CardItem2 data={cardInfo} key={cardInfo.id} />
+    ));
+    return cardItems;
+  }
+
   render() {
-    return (
-      <div className="container">
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-      </div>
-    );
+    const { data } = this.props;
+    if (!data) return '';
+    const cardItems = this.buildCardItems(data);
+    return <div className="container">{cardItems}</div>;
   }
 }
 
 CardsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  data: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
 };
 
 const mapStateToProps = createStructuredSelector({

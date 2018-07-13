@@ -25,26 +25,29 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const ROOT_URL_POSTER = 'https://image.tmdb.org/t/p/w300';
+
 /* eslint-disable react/prefer-stateless-function */
 export class CardItem extends React.Component {
   render() {
+    const { data } = this.props;
+    const { title, overview } = data;
+    const posterUrl = `${ROOT_URL_POSTER}${data.backdrop_path}`;
+    debugger
     return (
       <div className="cardItem">
         <div>
           <Card className="card">
             <CardMedia
               className="media"
-              image="/static/images/cards/contemplative-reptile.jpg"
+              image={posterUrl}
               title="Contemplative Reptile"
             />
             <CardContent>
               <Typography gutterBottom variant="headline" component="h2">
-                Lizard
+                {title}
               </Typography>
-              <Typography component="p">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
+              <Typography component="p">{overview}</Typography>
             </CardContent>
             <CardActions>
               <Button size="small" color="primary">
@@ -63,6 +66,7 @@ export class CardItem extends React.Component {
 
 CardItem.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  data: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

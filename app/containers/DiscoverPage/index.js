@@ -21,18 +21,23 @@ import makeSelectDiscoverPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+// Actions
+import { getDiscoverData } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class DiscoverPage extends React.Component {
+  componentDidMount() {
+    this.props.getDiscoverData();
+  }
   render() {
+    const { data } = this.props;
     return (
       <div>
         <Helmet>
           <title>DiscoverPage</title>
           <meta name="description" content="Description of DiscoverPage" />
         </Helmet>
-        {/*<FormattedMessage {...messages.header} />*/}
-        <CardsContainer />
+        <CardsContainer data={data} />
       </div>
     );
   }
@@ -40,15 +45,20 @@ export class DiscoverPage extends React.Component {
 
 DiscoverPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  data: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+  getDiscoverData: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  discoverpage: makeSelectDiscoverPage(),
+  data: makeSelectDiscoverPage(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    getDiscoverData: () => {
+      dispatch(getDiscoverData());
+    },
   };
 }
 
